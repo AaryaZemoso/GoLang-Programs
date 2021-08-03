@@ -21,6 +21,23 @@ func Hello(s string) (string, error) {
 	return message, nil
 }
 
+func Hellos(s []string) (map[string]string, error) {
+
+	messages := make(map[string]string)
+
+	for i := range s {
+
+		msg, err := Hello(s[i])
+		if err != nil {
+			return nil, err
+		}
+
+		messages[s[i]] = msg
+	}
+
+	return messages, nil
+}
+
 func randomFormat() string {
 	formats := []string{
 		"Hi %v. Welcome",
