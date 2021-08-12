@@ -2,18 +2,19 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
 	messages := make(chan string)
 	signals := make(chan bool)
 
-	// go func() {
-	// 	messages <- "Hello"
-	// }()
-	// time.Sleep(time.Second)
+	go func() {
+		<-messages
+	}()
+	time.Sleep(time.Second)
 
-	messages <- "Hello"
+	// messages <- "Hello"
 
 	select {
 	case msg := <-messages:
